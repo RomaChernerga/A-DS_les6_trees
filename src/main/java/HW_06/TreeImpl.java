@@ -66,12 +66,16 @@ public class TreeImpl <E extends Comparable <? super E>>implements Tree<E> {
             // теперь мы понимаем родителя и узел, куда нужно создавать...
         } else if(parent.isLeftChild(value)) { // если парент должен быть добавлен в лев сторону, то обращаемся к род узлу
             parent.setLeftChild(node); // и отдаем узел, который должен там быть
-            level++;
+
         } else {
             parent.setRightChild(node); // а иначе присваиваем правую сторону
-            level++;
+
         }
         size++;
+
+
+
+
 
         return true;
     }
