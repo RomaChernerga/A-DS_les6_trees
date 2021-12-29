@@ -1,5 +1,7 @@
 package HW_06;
 
+import les6_HW.TreeNode;
+
 import java.util.Stack;
 
 public class TreeImpl <E extends Comparable <? super E>>implements Tree<E> {
@@ -72,11 +74,6 @@ public class TreeImpl <E extends Comparable <? super E>>implements Tree<E> {
 
         }
         size++;
-
-
-
-
-
         return true;
     }
 
@@ -177,6 +174,33 @@ public class TreeImpl <E extends Comparable <? super E>>implements Tree<E> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+
+    private int lh = 0;
+    private int rh = 0;
+
+    private void leftHeight(Node<E> root) {
+        if (root != null) {
+            leftHeight(root.getLeftChild());
+            lh = lh + 1;
+        }
+    }
+
+    private void rightHeight(Node<E> root) {
+        if (root != null) {
+            rightHeight(root.getRightChild());
+            rh = rh + 1;
+        }
+    }
+
+    @Override
+    public boolean balance() {
+        leftHeight(root);
+        rightHeight(root);
+        int res = lh - rh;
+        lh = rh = 0;
+        return res <= 1;
     }
 
     @Override

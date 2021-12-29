@@ -14,6 +14,8 @@ public interface Tree <E extends Comparable < ? super E>> {
 
     boolean isEmpty();  // проверка на пустоту
 
+    public boolean balance();
+
     int size();  // размер
 
     int level();  // уровни
